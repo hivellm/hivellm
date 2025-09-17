@@ -1,0 +1,119 @@
+{
+  "folders": [
+    {
+      "name": "🏛️ Governance (BIP Specs)",
+      "path": "./hive-gov"
+    },
+    {
+      "name": "🔷 TypeScript (BIP-01,02,03)",
+      "path": "./hive-ts-workspace"
+    },
+    {
+      "name": "🎯 Cursor Extension (BIP-00)",
+      "path": "./hive-cursor-extension"
+    },
+    {
+      "name": "🔒 Security Environment (BIP-04)",
+      "path": "./hive-py-env-security"
+    },
+    {
+      "name": "🌐 UMICP Protocol (BIP-05)",
+      "path": "./hive-umicp"
+    },
+    {
+      "name": "📦 Legacy Archive",
+      "path": "./cmmv-hive"
+    }
+  ],
+  "settings": {
+    "typescript.preferences.includePackageJsonAutoImports": "on",
+    "typescript.suggest.autoImports": true,
+    "python.defaultInterpreterPath": "python3",
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": true,
+    "python.formatting.provider": "black",
+    "cmake.configureOnOpen": false,
+    "files.associations": {
+      "*.md": "markdown",
+      "*.yml": "yaml",
+      "*.yaml": "yaml"
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true,
+      "**/build": true,
+      "**/target": true,
+      "**/__pycache__": true,
+      "**/*.pyc": true
+    },
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.git": false,
+      "**/build": true,
+      "**/dist": true,
+      "**/target": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode.vscode-typescript-next",
+      "esbenp.prettier-vscode", 
+      "ms-python.python",
+      "ms-python.black-formatter",
+      "ms-vscode.cmake-tools",
+      "rust-lang.rust-analyzer",
+      "yzhang.markdown-all-in-one",
+      "redhat.vscode-yaml"
+    ]
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Build TypeScript Workspace",
+        "type": "shell",
+        "command": "pnpm build",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder}/hive-ts-workspace"
+        }
+      },
+      {
+        "label": "Test TypeScript Workspace", 
+        "type": "shell",
+        "command": "pnpm test",
+        "group": "test",
+        "options": {
+          "cwd": "${workspaceFolder}/hive-ts-workspace"
+        }
+      },
+      {
+        "label": "Build UMICP Core",
+        "type": "shell",
+        "command": "mkdir -p build && cd build && cmake ../cpp && make",
+        "group": "build",
+        "options": {
+          "cwd": "${workspaceFolder}/hive-umicp"
+        }
+      },
+      {
+        "label": "Test Python Security",
+        "type": "shell", 
+        "command": "python -m pytest tests/",
+        "group": "test",
+        "options": {
+          "cwd": "${workspaceFolder}/hive-py-env-security"
+        }
+      },
+      {
+        "label": "Build Cursor Extension",
+        "type": "shell",
+        "command": "pnpm build",
+        "group": "build", 
+        "options": {
+          "cwd": "${workspaceFolder}/hive-cursor-extension"
+        }
+      }
+    ]
+  }
+}
