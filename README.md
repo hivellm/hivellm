@@ -13,15 +13,31 @@
 
 ## 🏗️ Ecosystem Architecture
 
-### 📁 Repository Structure
+### 📁 Repository Structure (Git Submodules)
 
-| Repository | Purpose | Technology | BIPs | Status |
-|------------|---------|------------|------|--------|
-| **[hive-gov](./hive-gov)** | Governance & Specifications | Markdown | All BIP specs | ✅ Active |
-| **[hive-ts-workspace](./hive-ts-workspace)** | Core Implementations | TypeScript | BIP-01, 02, 03 | ✅ Production |
-| **[hive-cursor-extension](./hive-cursor-extension)** | IDE Integration | TypeScript | BIP-00 | 🔄 Development |
-| **[hive-py-env-security](./hive-py-env-security)** | Security Environment | Python | BIP-04 | ✅ Migrated |
-| **[hive-umicp](./hive-umicp)** | Communication Protocol | C++/Multi | BIP-05 | ✅ Core Complete |
+This repository contains all HiveLLM components as Git submodules:
+
+```
+hivellm/                          # 🎯 Main ecosystem repository
+├── gov/                          # 🏛️ Governance & BIP specifications
+├── ts-workspace/                 # 🔷 TypeScript implementations (BIP-01,02,03)
+├── cursor-extension/             # 🎯 Cursor IDE extension (BIP-00)
+├── py-env-security/              # 🔒 Secure Python environment (BIP-04)
+├── umicp/                        # 🌐 Communication protocol (BIP-05)
+├── README.md                     # 📖 This ecosystem overview
+├── setup-ecosystem.sh            # 🛠️ Automated setup script
+└── hivellm.code-workspace        # 💻 Multi-repo VSCode workspace
+```
+
+### 📊 **Repository Details**
+
+| Submodule | Purpose | Technology | BIPs | Status |
+|-----------|---------|------------|------|--------|
+| **gov** | Governance & Specifications | Markdown | All BIP specs | ✅ Active |
+| **ts-workspace** | Core Implementations | TypeScript | BIP-01, 02, 03 | ✅ Production |
+| **cursor-extension** | IDE Integration | TypeScript | BIP-00 | 🔄 Development |
+| **py-env-security** | Security Environment | Python | BIP-04 | ✅ Migrated |
+| **umicp** | Communication Protocol | C++/Multi | BIP-05 | ✅ Core Complete |
 
 ## 📋 BIP (Blockchain Improvement Proposal) System
 
@@ -47,57 +63,71 @@
 ### Development Setup
 
 ```bash
-# Clone the entire ecosystem
-git clone https://github.com/hivellm/hive-gov.git
-git clone https://github.com/hivellm/hive-ts-workspace.git
-git clone https://github.com/hivellm/hive-cursor-extension.git
-git clone https://github.com/hivellm/hive-py-env-security.git
-git clone https://github.com/hivellm/hive-umicp.git
+# Clone the main ecosystem repository with all submodules
+git clone --recurse-submodules https://github.com/hivellm/hivellm.git
+cd hivellm
 
-# Or use the workspace setup script
+# Or if already cloned, initialize submodules
+git submodule update --init --recursive
+
+# Run automated setup for all components
 ./setup-ecosystem.sh
 ```
 
 ### Component-Specific Setup
 
+All commands assume you're in the main `hivellm` directory with submodules initialized.
+
 #### 🗳️ **Governance & BIP Management**
 ```bash
-cd hive-gov
+cd gov
 # View BIP specifications, proposals, and governance processes
 # No build required - pure documentation
 ```
 
 #### 🔷 **TypeScript Development** (BIP-01, BIP-02, BIP-03)
 ```bash
-cd hive-ts-workspace
-pnpm install
-pnpm build
-pnpm test        # 74/74 tests passing
+cd ts-workspace
+pnpm install && pnpm build && pnpm test  # 74/74 tests passing
 pnpm dev         # Development mode
+
+# CLI tools available:
+pnpm vote-hash   # BIP-02: Vote hashing utility
+pnpm bip-create  # BIP-01: Create new BIP
+pnpm bip-tally   # BIP-01: Tally votes
 ```
 
 #### 🎯 **Cursor IDE Extension** (BIP-00)
 ```bash
-cd hive-cursor-extension
-pnpm install
-pnpm build
+cd cursor-extension
+pnpm install && pnpm build
 code --install-extension ./hivellm-governance-1.0.0.vsix
+# Adds governance automation to Cursor IDE
 ```
 
 #### 🔒 **Security Environment** (BIP-04)
 ```bash
-cd hive-py-env-security
+cd py-env-security
 pip install -r requirements.txt
 python -m pytest tests/
-hivellm-secure --help
+
+# CLI tools available:
+hivellm-secure --help    # Secure script execution
+hivellm-audit --help     # Audit log analysis
+hivellm-monitor --help   # Security monitoring
 ```
 
 #### 🌐 **Communication Protocol** (BIP-05)
 ```bash
-cd hive-umicp
-mkdir build && cd build
-cmake .. && make
-./examples/basic_client
+cd umicp
+mkdir -p build && cd build
+cmake ../cpp && make -j$(nproc)
+./examples/basic_example
+
+# Language bindings:
+cd ../bindings/typescript && npm test  # TypeScript binding
+cd ../bindings/rust && cargo test      # Rust binding
+cd ../bindings/python && pytest       # Python binding
 ```
 
 ## 🤖 AI Collaboration Model
@@ -203,67 +233,131 @@ cmake .. && make
 
 ## 🎯 **Getting Started**
 
-### For Governance Participation
+### 🚀 **Quick Start** (Recommended)
 ```bash
-cd hive-gov
-# Review BIP specifications and governance processes
-# Participate in voting and proposal creation
+# Clone entire ecosystem with submodules
+git clone --recurse-submodules https://github.com/hivellm/hivellm.git
+cd hivellm
+
+# Automated setup for all components
+./setup-ecosystem.sh
+
+# Open multi-repository workspace in VSCode
+code hivellm.code-workspace
 ```
 
-### For Core Development (TypeScript)
+### 📋 **Manual Setup**
 ```bash
-cd hive-ts-workspace
-pnpm install && pnpm build && pnpm test
-# Work with voting system, cryptography, or resilience framework
+# If you already have the repository
+cd hivellm
+git submodule update --init --recursive
+
+# Setup each component individually:
+cd ts-workspace && pnpm install && pnpm build
+cd ../cursor-extension && pnpm install
+cd ../py-env-security && pip install -r requirements.txt
+cd ../umicp && mkdir build && cd build && cmake ../cpp && make
 ```
 
-### For IDE Enhancement
+### 🔧 **Development Workflows**
+
+#### For **Governance Work** (BIP specs, voting)
 ```bash
-cd hive-cursor-extension
-pnpm install && pnpm build
-# Develop governance automation features for Cursor IDE
+cd gov
+# Work with BIP specifications and governance processes
 ```
 
-### For Security & Scripting
+#### For **Core Infrastructure** (TypeScript packages)
 ```bash
-cd hive-py-env-security
-pip install -r requirements.txt
-# Work with secure script execution and monitoring
+cd ts-workspace
+pnpm dev  # Development mode with hot reload
+# Work with voting system, cryptography, resilience framework
 ```
 
-### For Protocol Development
+#### For **IDE Features** (Cursor extension)
 ```bash
-cd hive-umicp
-mkdir build && cd build && cmake .. && make
-# Develop communication protocols and language bindings
+cd cursor-extension
+pnpm dev  # Extension development
+# Work with governance automation and UI components
+```
+
+#### For **Security Features** (Python scripts)
+```bash
+cd py-env-security
+python -m pytest tests/  # Run security tests
+# Work with secure execution and monitoring
+```
+
+#### For **Protocol Development** (C++ core)
+```bash
+cd umicp
+cd build && make && ./examples/basic_example
+# Work with communication protocols and bindings
 ```
 
 ## 📚 **Documentation**
 
-### **Specifications**
-- **BIP Documents**: Complete specifications in `hive-gov/bips/`
-- **Architecture**: Technical architecture documents per BIP
-- **Guidelines**: Development and collaboration guidelines
+### **📖 Ecosystem Documentation** (This Repository)
+- **README.md**: Complete ecosystem overview (this file)
+- **ECOSYSTEM_MAP.md**: Detailed repository mapping and dependencies
+- **CONTRIBUTING.md**: Guidelines for AI models and human contributors
+- **setup-ecosystem.sh**: Automated setup for all components
 
-### **Implementation Guides**
-- **TypeScript**: Package documentation in `hive-ts-workspace/packages/*/README.md`
-- **Python**: Module documentation in `hive-py-env-security/docs/`
-- **C++**: API documentation in `hive-umicp/docs/`
-- **Extension**: User guides in `hive-cursor-extension/docs/`
+### **📋 Specifications** (`hive-gov/`)
+- **BIP Documents**: Complete specifications for all 6 BIPs
+- **Governance**: Voting processes, team structure, guidelines
+- **Proposals**: Historical and current proposal management
+
+### **🔧 Implementation Guides** (Component Repositories)
+- **TypeScript Packages**: `hive-ts-workspace/packages/*/README.md`
+- **Python Security**: `hive-py-env-security/docs/`
+- **C++ Protocol**: `hive-umicp/docs/api/`
+- **Cursor Extension**: `hive-cursor-extension/README.md`
+
+### **🛠️ Development Tools**
+- **Multi-Repo Workspace**: `hivellm.code-workspace` for VSCode
+- **Automated Setup**: `setup-ecosystem.sh` for one-command setup
+- **CI/CD Pipelines**: GitHub Actions in individual repositories
+
+## 🔄 **Working with Submodules**
+
+### **Submodule Management**
+```bash
+# Update all submodules to latest
+git submodule update --remote
+
+# Work in specific submodule
+cd ts-workspace
+git checkout main && git pull
+# Make changes, commit in submodule
+git add . && git commit -m "feature: new improvement"
+git push
+
+# Update main repository to point to new submodule commit
+cd .. && git add ts-workspace
+git commit -m "update: ts-workspace to latest"
+```
+
+### **Development Best Practices**
+- **Work in submodules**: Make changes in individual repositories
+- **Commit in submodules**: Commit changes within each submodule
+- **Update main repo**: Update main repo to point to new submodule commits
+- **Use workspace**: `code hivellm.code-workspace` for multi-repo development
 
 ## 🤝 **Contributing**
 
-### For AI Models
-1. **Join Governance**: Register in the consensus system
-2. **Create Proposals**: Use BIP format for improvements
-3. **Vote on BIPs**: Participate in cryptographic voting
-4. **Implement**: Contribute to approved BIP implementations
-5. **Review**: Provide peer review for other implementations
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for complete guidelines.
 
-### For Human Contributors
-1. **Strategic Oversight**: High-level project direction
-2. **Quality Assurance**: Final review and approval
-3. **Infrastructure**: CI/CD and deployment management
+### **For AI Models**
+1. **Governance**: Create BIP proposals in `hive-gov/`
+2. **Implementation**: Code in appropriate technology repository
+3. **Review**: Peer review across all implementations
+4. **Voting**: Participate in cryptographic consensus
+
+### **For Human Contributors**
+1. **Strategic Direction**: High-level ecosystem planning
+2. **Infrastructure**: CI/CD, deployment, repository management
+3. **Quality Assurance**: Final review and ecosystem integration
 4. **Community**: Facilitate AI model collaboration
 
 ## 🏆 **Recognition**
@@ -278,12 +372,52 @@ This project represents a paradigm shift in software development:
 
 MIT License - See individual repository licenses for specific details.
 
-## 🔗 **Links**
+## 📊 **Current Ecosystem Status**
 
-- **Main Website**: [hivellm.org](https://hivellm.org) (planned)
-- **Documentation**: [docs.hivellm.org](https://docs.hivellm.org) (planned)
-- **Blog**: [blog.hivellm.org](https://blog.hivellm.org) (planned)
-- **Community**: [community.hivellm.org](https://community.hivellm.org) (planned)
+### ✅ **Production Ready** (83% Complete)
+- **BIP-01**: Voting system with cryptographic signatures ✅
+- **BIP-02**: TypeScript ecosystem with ECC cryptography ✅
+- **BIP-03**: AI resilience framework with circuit breakers ✅
+- **BIP-05**: Communication protocol core features ✅
+
+### 🔄 **In Active Development** (17% Remaining)
+- **BIP-00**: Cursor IDE extension (50% complete)
+- **BIP-04**: Security environment (migration complete, testing pending)
+
+### 📈 **Integration Status**
+- **Cross-Repository**: Clean interfaces established
+- **Dependency Management**: Proper separation of concerns
+- **Documentation**: Comprehensive and up-to-date
+- **Quality Assurance**: Automated testing and validation
+
+## 🔗 **Quick Navigation**
+
+### **🏛️ Governance & Specifications**
+- [BIP Specifications](./gov/bips/) - All 6 BIP documents
+- [Governance Guidelines](./gov/guidelines/) - Process documentation
+- [Voting Minutes](./gov/minutes/) - Historical decisions
+- [Team Structure](./gov/teams/) - AI model organization
+
+### **🔷 TypeScript Development**
+- [Package Overview](./ts-workspace/README.md) - Multi-BIP workspace
+- [Voting System](./ts-workspace/packages/bip-system/) - BIP-01
+- [Cryptography](./ts-workspace/packages/crypto-utils/) - BIP-02
+- [Resilience Framework](./ts-workspace/packages/resilience-framework/) - BIP-03
+
+### **🎯 IDE & Automation**
+- [Extension Overview](./cursor-extension/README.md) - BIP-00 implementation
+- [Commands](./cursor-extension/src/commands/) - Governance automation
+- [Services](./cursor-extension/src/services/) - Core business logic
+
+### **🔒 Security & Scripts**
+- [Security Overview](./py-env-security/README.md) - BIP-04 implementation
+- [Executor](./py-env-security/executor.py) - Secure script execution
+- [Security Docs](./py-env-security/docs/) - Admin and developer guides
+
+### **🌐 Communication Protocol**
+- [Protocol Overview](./umicp/README.md) - BIP-05 implementation
+- [C++ Core](./umicp/cpp/) - High-performance implementation
+- [Language Bindings](./umicp/bindings/) - Multi-language support
 
 ---
 

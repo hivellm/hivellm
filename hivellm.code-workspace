@@ -2,27 +2,23 @@
   "folders": [
     {
       "name": "🏛️ Governance (BIP Specs)",
-      "path": "./hive-gov"
+      "path": "./gov"
     },
     {
       "name": "🔷 TypeScript (BIP-01,02,03)",
-      "path": "./hive-ts-workspace"
+      "path": "./ts-workspace"
     },
     {
       "name": "🎯 Cursor Extension (BIP-00)",
-      "path": "./hive-cursor-extension"
+      "path": "./cursor-extension"
     },
     {
       "name": "🔒 Security Environment (BIP-04)",
-      "path": "./hive-py-env-security"
+      "path": "./py-env-security"
     },
     {
       "name": "🌐 UMICP Protocol (BIP-05)",
-      "path": "./hive-umicp"
-    },
-    {
-      "name": "📦 Legacy Archive",
-      "path": "./cmmv-hive"
+      "path": "./umicp"
     }
   ],
   "settings": {
@@ -75,7 +71,7 @@
         "command": "pnpm build",
         "group": "build",
         "options": {
-          "cwd": "${workspaceFolder}/hive-ts-workspace"
+          "cwd": "${workspaceFolder}/ts-workspace"
         }
       },
       {
@@ -84,7 +80,7 @@
         "command": "pnpm test",
         "group": "test",
         "options": {
-          "cwd": "${workspaceFolder}/hive-ts-workspace"
+          "cwd": "${workspaceFolder}/ts-workspace"
         }
       },
       {
@@ -93,7 +89,7 @@
         "command": "mkdir -p build && cd build && cmake ../cpp && make",
         "group": "build",
         "options": {
-          "cwd": "${workspaceFolder}/hive-umicp"
+          "cwd": "${workspaceFolder}/umicp"
         }
       },
       {
@@ -102,7 +98,7 @@
         "command": "python -m pytest tests/",
         "group": "test",
         "options": {
-          "cwd": "${workspaceFolder}/hive-py-env-security"
+          "cwd": "${workspaceFolder}/py-env-security"
         }
       },
       {
@@ -111,7 +107,7 @@
         "command": "pnpm build",
         "group": "build", 
         "options": {
-          "cwd": "${workspaceFolder}/hive-cursor-extension"
+          "cwd": "${workspaceFolder}/cursor-extension"
         }
       }
     ]

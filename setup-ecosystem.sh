@@ -52,11 +52,11 @@ cd workspace
 echo "📥 Cloning repositories..."
 
 repos=(
-    "hive-gov:Governance & BIP Specifications"
-    "hive-ts-workspace:TypeScript Implementation Hub (BIP-01,02,03)"
-    "hive-cursor-extension:Cursor IDE Extension (BIP-00)"
-    "hive-py-env-security:Secure Script Execution (BIP-04)"
-    "hive-umicp:Communication Protocol (BIP-05)"
+    "gov:Governance & BIP Specifications"
+    "ts-workspace:TypeScript Implementation Hub (BIP-01,02,03)"
+    "cursor-extension:Cursor IDE Extension (BIP-00)"
+    "py-env-security:Secure Script Execution (BIP-04)"
+    "umicp:Communication Protocol (BIP-05)"
 )
 
 for repo_info in "${repos[@]}"; do
@@ -79,9 +79,9 @@ echo ""
 echo "🛠️  Setting up development environments..."
 
 # Setup TypeScript workspace
-if [ -d "hive-ts-workspace" ]; then
+if [ -d "ts-workspace" ]; then
     echo "  📦 Setting up TypeScript workspace..."
-    cd hive-ts-workspace
+    cd ts-workspace
     if [ -f "package.json" ]; then
         pnpm install || echo "    ⚠️  pnpm install failed, continuing..."
         pnpm build || echo "    ⚠️  pnpm build failed, continuing..."
@@ -90,9 +90,9 @@ if [ -d "hive-ts-workspace" ]; then
 fi
 
 # Setup Cursor extension
-if [ -d "hive-cursor-extension" ]; then
+if [ -d "cursor-extension" ]; then
     echo "  🎯 Setting up Cursor extension..."
-    cd hive-cursor-extension
+    cd cursor-extension
     if [ -f "package.json" ]; then
         pnpm install || echo "    ⚠️  pnpm install failed, continuing..."
     fi
@@ -100,9 +100,9 @@ if [ -d "hive-cursor-extension" ]; then
 fi
 
 # Setup Python security environment
-if [ -d "hive-py-env-security" ]; then
+if [ -d "py-env-security" ]; then
     echo "  🔒 Setting up Python security environment..."
-    cd hive-py-env-security
+    cd py-env-security
     if [ -f "requirements.txt" ]; then
         python3 -m venv .venv || echo "    ⚠️  Virtual environment creation failed, continuing..."
         source .venv/bin/activate 2>/dev/null || echo "    ⚠️  Virtual environment activation failed, continuing..."
@@ -112,9 +112,9 @@ if [ -d "hive-py-env-security" ]; then
 fi
 
 # Setup UMICP protocol
-if [ -d "hive-umicp" ]; then
+if [ -d "umicp" ]; then
     echo "  🌐 Setting up UMICP protocol..."
-    cd hive-umicp
+    cd umicp
     if [ -f "cpp/CMakeLists.txt" ]; then
         mkdir -p build
         cd build
@@ -130,16 +130,16 @@ echo "🎉 HiveLLM Ecosystem Setup Complete!"
 echo ""
 echo "📁 Directory structure:"
 echo "  workspace/"
-echo "  ├── hive-gov/                 # Governance & BIP specifications"
-echo "  ├── hive-ts-workspace/        # TypeScript implementations (BIP-01,02,03)"
-echo "  ├── hive-cursor-extension/    # Cursor IDE extension (BIP-00)"
-echo "  ├── hive-py-env-security/     # Secure execution environment (BIP-04)"
-echo "  └── hive-umicp/               # Communication protocol (BIP-05)"
+echo "  ├── gov/                 # Governance & BIP specifications"
+echo "  ├── ts-workspace/        # TypeScript implementations (BIP-01,02,03)"
+echo "  ├── cursor-extension/    # Cursor IDE extension (BIP-00)"
+echo "  ├── py-env-security/     # Secure execution environment (BIP-04)"
+echo "  └── umicp/               # Communication protocol (BIP-05)"
 echo ""
 echo "🚀 Next steps:"
-echo "  1. cd workspace/hive-gov && explore BIP specifications"
-echo "  2. cd workspace/hive-ts-workspace && pnpm dev"
-echo "  3. cd workspace/hive-cursor-extension && code ."
+echo "  1. cd workspace/gov && explore BIP specifications"
+echo "  2. cd workspace/ts-workspace && pnpm dev"
+echo "  3. cd workspace/cursor-extension && code ."
 echo "  4. Open hivellm.code-workspace in VSCode for multi-repo development"
 echo ""
 echo "📚 Documentation: See README.md in each repository"
