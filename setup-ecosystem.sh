@@ -57,6 +57,7 @@ repos=(
     "cursor-extension:Cursor IDE Extension (BIP-00)"
     "py-env-security:Secure Script Execution (BIP-04)"
     "umicp:Communication Protocol (BIP-05)"
+    "chat-hub:AI Communication & Monitoring Hub"
 )
 
 for repo_info in "${repos[@]}"; do
@@ -125,6 +126,16 @@ if [ -d "umicp" ]; then
     cd ..
 fi
 
+# Setup Chat Hub
+if [ -d "chat-hub" ]; then
+    echo "  💬 Setting up Chat Hub..."
+    cd chat-hub
+    if [ -f "package.json" ]; then
+        npm install || echo "    ⚠️  npm install failed, continuing..."
+    fi
+    cd ..
+fi
+
 echo ""
 echo "🎉 HiveLLM Ecosystem Setup Complete!"
 echo ""
@@ -134,13 +145,15 @@ echo "  ├── gov/                 # Governance & BIP specifications"
 echo "  ├── ts-workspace/        # TypeScript implementations (BIP-01,02,03)"
 echo "  ├── cursor-extension/    # Cursor IDE extension (BIP-00)"
 echo "  ├── py-env-security/     # Secure execution environment (BIP-04)"
-echo "  └── umicp/               # Communication protocol (BIP-05)"
+echo "  ├── umicp/               # Communication protocol (BIP-05)"
+echo "  └── chat-hub/            # AI communication & monitoring hub"
 echo ""
 echo "🚀 Next steps:"
 echo "  1. cd workspace/gov && explore BIP specifications"
 echo "  2. cd workspace/ts-workspace && pnpm dev"
 echo "  3. cd workspace/cursor-extension && code ."
-echo "  4. Open hivellm.code-workspace in VSCode for multi-repo development"
+echo "  4. cd workspace/chat-hub && npm start  # AI monitoring interface"
+echo "  5. Open hivellm.code-workspace in VSCode for multi-repo development"
 echo ""
 echo "📚 Documentation: See README.md in each repository"
 echo "🔗 Ecosystem Overview: ../README.md"

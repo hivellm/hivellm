@@ -1,11 +1,11 @@
 # 🤖 HiveLLM - AI Model Consensus & Governance Ecosystem
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![AI Models](https://img.shields.io/badge/AI%20Models-17%2B%20Active-green.svg)](https://github.com/hivellm/hive-gov)
+[![AI Models](https://img.shields.io/badge/AI%20Models-27%20Active-green.svg)](./chat-hub)
 [![BIP System](https://img.shields.io/badge/BIP%20System-6%20Implementations-orange.svg)](https://github.com/hivellm/hive-gov)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://github.com/hivellm/hive-ts-workspace)
 
-> **HiveLLM** is a groundbreaking AI governance ecosystem where 17+ AI models collaborate through structured consensus to build complex software systems autonomously.
+> **HiveLLM** is a groundbreaking AI governance ecosystem where 27 AI models collaborate through structured consensus to build complex software systems autonomously.
 
 ## 🎯 Vision
 
@@ -24,6 +24,7 @@ hivellm/                          # 🎯 Main ecosystem repository
 ├── cursor-extension/             # 🎯 Cursor IDE extension (BIP-00)
 ├── py-env-security/              # 🔒 Secure Python environment (BIP-04)
 ├── umicp/                        # 🌐 Communication protocol (BIP-05)
+├── chat-hub/                     # 💬 AI model communication & monitoring hub
 ├── README.md                     # 📖 This ecosystem overview
 ├── setup-ecosystem.sh            # 🛠️ Automated setup script
 └── hivellm.code-workspace        # 💻 Multi-repo VSCode workspace
@@ -38,6 +39,7 @@ hivellm/                          # 🎯 Main ecosystem repository
 | **cursor-extension** | IDE Integration | TypeScript | BIP-00 | 🔄 Development |
 | **py-env-security** | Security Environment | Python | BIP-04 | ✅ Migrated |
 | **umicp** | Communication Protocol | C++/Multi | BIP-05 | ✅ Core Complete |
+| **chat-hub** | AI Communication & Monitoring | Node.js | Support | ✅ Operational |
 
 ## 📋 BIP (Blockchain Improvement Proposal) System
 
@@ -130,17 +132,51 @@ cd ../bindings/rust && cargo test      # Rust binding
 cd ../bindings/python && pytest       # Python binding
 ```
 
+#### 💬 **Chat Hub & Monitoring**
+```bash
+cd chat-hub
+npm install && npm start
+# Access at http://localhost:3000
+
+# Available features:
+# - Real-time AI model communication
+# - Live governance monitoring  
+# - 27 AI model integration (4 cursor-agent + 23 aider)
+# - WebSocket-based updates
+# - Model connectivity testing
+```
+
 ## 🤖 AI Collaboration Model
 
-### 🧠 **17+ Active AI Models**
+### 🧠 **27 Active AI Models**
 
-#### **General Models (Core Decision Making)**
-- **Claude-4-Sonnet**, **GPT-5**, **DeepSeek-V3.1**, **Grok-3-Beta**
-- **Gemini-2.5-Pro**, **CodeLlama-70B**, **Mistral-Large**
+#### **Cursor-Agent Models (Built-in)**
+- **auto** - Automatic model selection
+- **gpt-5** - OpenAI GPT-5 (latest)
+- **sonnet-4** - Anthropic Claude Sonnet 4
+- **opus-4.1** - Anthropic Claude Opus 4.1
 
-#### **Collaboration Models (Specialized Tasks)**
-- **Grok-Code-Fast-1**, **Claude-Code-Assistant**, **GPT-4o**
-- **Plus 7+ additional specialized models**
+#### **Aider Models (External APIs)**
+
+**OpenAI (6 models)**:
+- gpt-4o, gpt-4o-mini, o1-mini, gpt-4-turbo, gpt-5-mini, gpt-5-nano
+
+**Anthropic (4 models)**:
+- claude-3-5-haiku-latest, claude-3-5-sonnet-latest, claude-3-opus-latest, claude-3-7-sonnet-latest
+
+**Google Gemini (4 models)**:
+- gemini-2.0-flash-lite, gemini-2.0-flash, gemini-2.5-pro-latest, gemini-2.5-flash-latest
+
+**xAI Grok (3 models)**:
+- grok-3-mini, grok-3, grok-beta
+
+**DeepSeek (1 model)**:
+- deepseek-chat
+
+**Groq (5 models)**:
+- llama-3.1-70b-versatile, llama-3.1-8b-instant, llama-3.3-70b-versatile, openai/gpt-oss-120, qwen/qwen3-32b
+
+> **Total**: 4 cursor-agent + 23 aider models = **27 AI models available**
 
 ### 🗳️ **Governance Process**
 
@@ -419,8 +455,14 @@ MIT License - See individual repository licenses for specific details.
 - [C++ Core](./umicp/cpp/) - High-performance implementation
 - [Language Bindings](./umicp/bindings/) - Multi-language support
 
+### **💬 Chat Hub & Monitoring**
+- [Chat Hub Overview](./chat-hub/README.md) - AI communication interface
+- [Web Interface](./chat-hub/index.html) - Real-time monitoring dashboard
+- [Server Application](./chat-hub/server.js) - Node.js monitoring server
+- [AI Model Testing](./chat-hub/test-all-models.js) - Model connectivity testing
+
 ---
 
-**Built by 17+ AI models working in consensus** 🤖  
+**Built by 27 AI models working in consensus** 🤖  
 **Coordinated by human oversight** 👨‍💻  
 **Powered by democratic decision-making** 🗳️

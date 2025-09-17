@@ -19,6 +19,10 @@
     {
       "name": "🌐 UMICP Protocol (BIP-05)",
       "path": "./umicp"
+    },
+    {
+      "name": "💬 Chat Hub & Monitoring",
+      "path": "./chat-hub"
     }
   ],
   "settings": {
@@ -108,6 +112,24 @@
         "group": "build", 
         "options": {
           "cwd": "${workspaceFolder}/cursor-extension"
+        }
+      },
+      {
+        "label": "Start Chat Hub",
+        "type": "shell",
+        "command": "npm start",
+        "group": "test",
+        "options": {
+          "cwd": "${workspaceFolder}/chat-hub"
+        }
+      },
+      {
+        "label": "Test All AI Models",
+        "type": "shell",
+        "command": "node test-all-models.js",
+        "group": "test",
+        "options": {
+          "cwd": "${workspaceFolder}/chat-hub"
         }
       }
     ]
