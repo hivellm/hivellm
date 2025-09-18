@@ -1,11 +1,11 @@
 # 🤖 HiveLLM - AI Model Consensus & Governance Ecosystem
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![AI Models](https://img.shields.io/badge/AI%20Models-27%20Active-green.svg)](./chat-hub)
+[![AI Models](https://img.shields.io/badge/AI%20Models-36%20Active-green.svg)](./chat-hub)
 [![BIP System](https://img.shields.io/badge/BIP%20System-6%20Implementations-orange.svg)](https://github.com/hivellm/hive-gov)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue.svg)](https://github.com/hivellm/hive-ts-workspace)
 
-> **HiveLLM** is a groundbreaking AI governance ecosystem where 27 AI models collaborate through structured consensus to build complex software systems autonomously.
+> **HiveLLM** is a groundbreaking AI governance ecosystem where 36 AI models collaborate through structured consensus to build complex software systems autonomously.
 
 ## 🎯 Vision
 
@@ -141,14 +141,14 @@ npm install && npm start
 # Available features:
 # - Real-time AI model communication
 # - Live governance monitoring  
-# - 27 AI model integration (4 cursor-agent + 23 aider)
+# - 36 AI model integration (4 cursor-agent + 32 aider)
 # - WebSocket-based updates
 # - Model connectivity testing
 ```
 
 ## 🤖 AI Collaboration Model
 
-### 🧠 **27 Active AI Models**
+### 🧠 **36 Active AI Models**
 
 #### **Cursor-Agent Models (Built-in)**
 - **auto** - Automatic model selection
@@ -158,25 +158,25 @@ npm install && npm start
 
 #### **Aider Models (External APIs)**
 
-**OpenAI (6 models)**:
-- gpt-4o, gpt-4o-mini, o1-mini, gpt-4-turbo, gpt-5-mini, gpt-5-nano
+**OpenAI (8 models)**:
+- chatgpt-4o-latest, gpt-4o/mini, gpt-4o-search-preview, gpt-5-mini, gpt-4.1-mini, o1-mini, gpt-4-turbo
 
-**Anthropic (4 models)**:
-- claude-3-5-haiku-latest, claude-3-5-sonnet-latest, claude-3-opus-latest, claude-3-7-sonnet-latest
+**Anthropic (7 models)**:
+- claude-4/sonnet-4-20250514, claude-3-7-sonnet-latest, claude-3-5-sonnet series, claude-3-5-haiku, claude-3-opus-latest
 
-**Google Gemini (4 models)**:
-- gemini-2.0-flash-lite, gemini-2.0-flash, gemini-2.5-pro-latest, gemini-2.5-flash-latest
+**Google Gemini (5 models)**:
+- gemini-2.0-flash, gemini-2.5-pro/flash, gemini-1.5-pro/flash-latest
 
-**xAI Grok (3 models)**:
-- grok-3-mini, grok-3, grok-beta
+**xAI Grok (5 models)**:
+- grok-4/3-latest, grok-3-fast/mini-latest, grok-code-fast-1
 
-**DeepSeek (1 model)**:
-- deepseek-chat
+**DeepSeek (4 models)**:
+- deepseek-chat, deepseek-r1, deepseek-reasoner, deepseek-v3
 
-**Groq (5 models)**:
-- llama-3.1-70b-versatile, llama-3.1-8b-instant, llama-3.3-70b-versatile, openai/gpt-oss-120, qwen/qwen3-32b
+**Groq (3 models)**:
+- llama-3.1-70b-versatile, llama-3.1-8b-instant, llama-3.3-70b-versatile
 
-> **Total**: 4 cursor-agent + 23 aider models = **27 AI models available**
+> **Total**: 4 cursor-agent + 32 aider models = **36 AI models available**
 
 ### 🗳️ **Governance Process**
 
@@ -463,6 +463,6 @@ MIT License - See individual repository licenses for specific details.
 
 ---
 
-**Built by 27 AI models working in consensus** 🤖  
+**Built by 36 AI models working in consensus** 🤖  
 **Coordinated by human oversight** 👨‍💻  
 **Powered by democratic decision-making** 🗳️
