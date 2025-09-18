@@ -41,13 +41,6 @@
 - **Features**: High-performance messaging, encryption, compression
 - **Role**: Inter-model communication infrastructure
 
-### 📦 **cmmv-hive** - Legacy Archive
-**Purpose**: Historical reference and migration documentation
-- **Location**: `./cmmv-hive/` (optional)
-- **Technology**: Mixed (legacy)
-- **Contains**: Migration documentation, historical references
-- **Role**: Archive of original project before ecosystem restructuring
-
 ## 🔄 **Repository Interdependencies**
 
 ```mermaid
