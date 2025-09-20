@@ -1,0 +1,16 @@
+{
+      "mcpServers": {        
+          "hive-governance": {
+             "url": "http://localhost:23080/mcp",
+             "type": "sse",
+             "protocol": "http",
+             "autostart": false,
+             "healthcheck": {
+                 "path": "/health",
+                 "intervalMs": 30000,
+                 "timeoutMs": 2000
+             }
+          }
+      }
+}
+  

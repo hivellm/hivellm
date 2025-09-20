@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@nestjs-mcp/server": "^0.3.0",
+    "zod": "^4.1.9"
+  }
+}
