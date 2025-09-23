@@ -24,6 +24,7 @@ hivellm/                          # 🎯 Main ecosystem repository
 ├── cursor-extension/             # 🎯 Cursor IDE extension (BIP-00)
 ├── py-env-security/              # 🔒 Secure Python environment (BIP-04)
 ├── umicp/                        # 🌐 Communication protocol (BIP-05)
+├── vectorizer/                   # 🔍 Advanced vector database (Phase 2 Complete)
 ├── chat-hub/                     # 💬 AI model communication & monitoring hub
 ├── README.md                     # 📖 This ecosystem overview
 ├── setup-ecosystem.sh            # 🛠️ Automated setup script
@@ -39,6 +40,7 @@ hivellm/                          # 🎯 Main ecosystem repository
 | **cursor-extension** | IDE Integration | TypeScript | BIP-00 | 🔄 Development |
 | **py-env-security** | Security Environment | Python | BIP-04 | ✅ Migrated |
 | **umicp** | Communication Protocol | C++/Multi | BIP-05 | ✅ Core Complete |
+| **vectorizer** | Advanced Vector Database | Rust | Phase 2 | ✅ **COMPLETED & APPROVED** |
 | **chat-hub** | AI Communication & Monitoring | Node.js | Support | ✅ Operational |
 
 ## 📋 BIP (Blockchain Improvement Proposal) System
@@ -60,6 +62,7 @@ hivellm/                          # 🎯 Main ecosystem repository
 - **Node.js** 18+ (for TypeScript components)
 - **Python** 3.8+ (for security components)
 - **C++17** (for UMICP protocol)
+- **Rust** 1.82+ (for Vectorizer database)
 - **Git** (for repository management)
 
 ### Development Setup
@@ -132,6 +135,29 @@ cd ../bindings/rust && cargo test      # Rust binding
 cd ../bindings/python && pytest       # Python binding
 ```
 
+#### 🔍 **Vector Database** (Vectorizer - Phase 2 Complete)
+```bash
+cd vectorizer
+cargo test        # Run all tests (79/79 passing, 100% success rate)
+cargo run --bin benchmark_embeddings --features full --release  # Comprehensive benchmark
+
+# Real transformer models (7 multilingual models):
+cargo build --features candle-models --release
+cargo run --bin download_models --features candle-models --release
+
+# Start production server:
+cargo run --features candle-models -- --host 127.0.0.1 --port 15001 --project ../your-documents/
+
+# Available features:
+# - Advanced embedding system (TF-IDF, BM25, SVD, BERT, MiniLM)
+# - Hybrid search pipeline (sparse → dense re-ranking)
+# - Real transformer models via Candle (MiniLM, E5, MPNet, GTE, LaBSE)
+# - HNSW indexing with adaptive search
+# - REST API with automatic embeddings
+# - Comprehensive evaluation metrics (MRR, MAP, P@K, R@K)
+# - Production-ready with 9.1/10 peer review score
+```
+
 #### 💬 **Chat Hub & Monitoring**
 ```bash
 cd chat-hub
@@ -193,12 +219,14 @@ npm install && npm start
 - **Completed BIPs**: 4/6 (BIP-01, BIP-02, BIP-03, BIP-05)
 - **In Development**: 1/6 (BIP-00)
 - **In Review**: 1/6 (BIP-04)
+- **Vectorizer**: Phase 2 Complete & Approved (9.1/10 score)
 - **Overall Progress**: 83% complete
 
 ### 🔧 **Technical Metrics**
 - **TypeScript Packages**: 5 production-ready packages
-- **Test Coverage**: 74+ automated tests
+- **Test Coverage**: 74+ automated tests (TypeScript) + 79/79 tests (Vectorizer)
 - **Python Modules**: 20+ security-focused modules
+- **Rust Components**: Advanced vector database with hybrid search
 - **Language Bindings**: 5 languages (C++, Rust, TS, Python, Go)
 - **CLI Tools**: 10+ command-line utilities
 
@@ -220,6 +248,7 @@ npm install && npm start
 - **Node.js** - Runtime for TypeScript components
 - **Python 3.8+** - Security and scripting environment
 - **C++17** - High-performance protocol implementation
+- **Rust 1.82+** - High-performance vector database and embeddings
 
 ### **Development Tools**
 - **Turborepo** - Monorepo build optimization
@@ -266,6 +295,12 @@ npm install && npm start
 - **BIP-05**: High-performance inter-model communication protocol
 - **Languages**: C++ core with 5 language bindings
 - **Features**: Encryption, compression, real-time messaging
+
+### 🔍 **[vectorizer](./vectorizer)** - Advanced Vector Database
+**Purpose**: High-performance vector database with advanced embedding systems
+- **Phase 2 Complete**: Advanced embeddings & hybrid search (9.1/10 score)
+- **Technology**: Rust with HNSW indexing and real transformer models
+- **Features**: Hybrid search, 7 multilingual models, REST API, comprehensive evaluation
 
 ## 🎯 **Getting Started**
 
@@ -331,6 +366,14 @@ cd build && make && ./examples/basic_example
 # Work with communication protocols and bindings
 ```
 
+#### For **Vector Database** (Rust database)
+```bash
+cd vectorizer
+cargo test --release  # Run comprehensive test suite
+cargo run --bin benchmark_embeddings --features full --release  # Performance benchmarks
+# Work with advanced embeddings, hybrid search, and real transformer models
+```
+
 ## 📚 **Documentation**
 
 ### **📖 Ecosystem Documentation** (This Repository)
@@ -349,6 +392,7 @@ cd build && make && ./examples/basic_example
 - **Python Security**: `hive-py-env-security/docs/`
 - **C++ Protocol**: `hive-umicp/docs/api/`
 - **Cursor Extension**: `hive-cursor-extension/README.md`
+- **Vector Database**: `vectorizer/README.md` (Phase 2 Complete & Approved)
 
 ### **🛠️ Development Tools**
 - **Multi-Repo Workspace**: `hivellm.code-workspace` for VSCode
@@ -415,6 +459,7 @@ MIT License - See individual repository licenses for specific details.
 - **BIP-02**: TypeScript ecosystem with ECC cryptography ✅
 - **BIP-03**: AI resilience framework with circuit breakers ✅
 - **BIP-05**: Communication protocol core features ✅
+- **Vectorizer**: Advanced vector database with hybrid search ✅ **COMPLETED & APPROVED**
 
 ### 🔄 **In Active Development** (17% Remaining)
 - **BIP-00**: Cursor IDE extension (50% complete)
@@ -454,6 +499,14 @@ MIT License - See individual repository licenses for specific details.
 - [Protocol Overview](./umicp/README.md) - BIP-05 implementation
 - [C++ Core](./umicp/cpp/) - High-performance implementation
 - [Language Bindings](./umicp/bindings/) - Multi-language support
+
+### **🔍 Vector Database**
+- [Vectorizer Overview](./vectorizer/README.md) - Phase 2 Complete & Approved
+- [Advanced Embeddings](./vectorizer/src/embedding/) - 8 embedding providers
+- [Hybrid Search](./vectorizer/src/hybrid_search.rs) - BM25→BERT pipeline
+- [Real Models](./vectorizer/src/embedding/real_models.rs) - 7 multilingual transformers
+- [Performance Guide](./vectorizer/docs/PERFORMANCE_GUIDE.md) - Optimization details
+- [Peer Reviews](./vectorizer/docs/phase2/) - Comprehensive review reports
 
 ### **💬 Chat Hub & Monitoring**
 - [Chat Hub Overview](./chat-hub/README.md) - AI communication interface
